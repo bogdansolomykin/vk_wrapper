@@ -10,30 +10,30 @@ import (
 const API_METHOD_URL = "https://api.vk.com/method/"
 
 type Api struct {
-	AccessToken string
-	UserId      string
-	ExpiresIn   string
+    AccessToken string
+    UserId      string
+    ExpiresIn   string
 }
 
 func ParseResponseUrl(responseUrl string) (string, string, string) {
     u, err := url.Parse(strings.Replace(responseUrl, "#", "?", 1))
     if err != nil {
-    	panic(err)
+        panic(err)
     }
     
     q := u.Query()    
-	return q.Get("access_token"), q.Get("user_id"), q.Get("expires_in")        
+    return q.Get("access_token"), q.Get("user_id"), q.Get("expires_in")        
 }
 
 func (vk Api) Request(methodName string, params map[string]string) string {
     u, err := url.Parse(API_METHOD_URL+methodName)
     if err != nil {
-    	panic(err)
+        panic(err)
     }
 
     q := u.Query()
     for k, v := range params {
-    	q.Set(k, v)
+        q.Set(k, v)
     }
     q.Set("access_token", vk.AccessToken)
     u.RawQuery = q.Encode()
@@ -46,7 +46,7 @@ func (vk Api) Request(methodName string, params map[string]string) string {
     defer resp.Body.Close()
     content, err := ioutil.ReadAll(resp.Body)
     if err != nil {
-    	panic(err)
+        panic(err)
     }
 
     return string(content)
