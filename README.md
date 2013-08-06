@@ -19,7 +19,7 @@ next you need to initialize a struct with your application params
 ```Go
 auth := vk.Auth{
     AppId: "11111", 
-    Scope: "friends, offline",
+    Scope: "friends, offline", //more access permissions https://vk.com/dev/permissions
     RedirectUri: "yoursite.com/get_access_token",
     ResponseType: "token",
 }
@@ -53,6 +53,4 @@ m["uid"] = userId
 stringResponse := api.Request("getProfiles", m) //{"response":[{"uid":1,"first_name":"Pavel","last_name":"Durov"}]}
 ```
 
-
-
-
+you can find all api methods on https://vk.com/dev/methods
