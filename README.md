@@ -1,7 +1,7 @@
 vk_wrapper
 ==========
 
-golang wrapper for most popular Russian social network vk.com
+go (golang) api wrapper for most popular Russian social network vk.com
 
 #How to use
 
